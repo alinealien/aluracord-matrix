@@ -1,43 +1,10 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import React from 'react';
+import { useRouter } from 'next/router';
 import appConfig from '../config.json';
 
-function GlobalStyle() {
-
-    return (
-        <style global jsx>{`
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            list-style: none;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-
-        }
-        /* App fit Height */
-        html, body, #__next {
-            min-height: 100vh;
-            display: flex;
-            flex: 1;
-        }
-        #__next {
-            flex: 1;
-        }
-        #__next > * {
-            flex: 1;
-        }
-        /* ./App fit Height */
-        
-    `}</style>
-
-    );
-}
-
-
 function Titulo(props) {
-    console.log(props);
+    //console.log(props);
     const Tag = props.tag;
 
     return (
@@ -62,7 +29,7 @@ function Titulo(props) {
         //<div style={{ backgroundColor: 'black'}}>
             //<GlobalStyle />
             //<Titulo tag="h2">Boas Vindas de volta!</Titulo>
-            //<h2> Discord - Alura Matrix</h2>
+            //<h2> Discord - Alura Matrix </h2>
 
 
         //</div>
@@ -72,20 +39,24 @@ function Titulo(props) {
 //export default HomePage
 
 export default function PaginaInicial() {
-     const username = 'alinealien';
-    //const [username, setUsername] = React.useState('omariosouto');
-    //const roteamento = useRouter();
+     //const username = 'alinealien';
+     const [username, setUsername] = React.useState('alinealien');
+     //console.log('stateDoReact');
+     const roteamento = useRouter();
   
     return (
       <>
-        <Box
+      
+        <Box 
+        
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            backgroundColor: appConfig.theme.colors.primary[500],
-            backgroundImage: 'url(https://i.pinimg.com/564x/45/ed/aa/45edaa4e483c25e3c2fbf19405fe867f.jpg)',
-            backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
+            backgroundColor: appConfig.theme.colors.primary[700],
+            backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+            backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply', 
           }}
         >
+      
           <Box
             styleSheet={{
               display: 'flex',
@@ -108,7 +79,7 @@ export default function PaginaInicial() {
                 infosDoEvento.preventDefault();
                 console.log('Alguém submeteu o form');
                 roteamento.push('/chat');
-                // window.location.href = '/chat';
+                //window.location.href = '/chat';
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -120,7 +91,7 @@ export default function PaginaInicial() {
                 {appConfig.name}
               </Text>
   
-              {/* <input
+               {/* <input
                               type="text"
                               value={username}
                               onChange={function (event) {
@@ -131,8 +102,9 @@ export default function PaginaInicial() {
                                   // através do React e avise quem precisa
                                   setUsername(valor);
                               }}
-                          /> */}
-              <TextField
+                            /> */}
+
+                <TextField
                 value={username}
                 onChange={function (event) {
                   console.log('usuario digitou', event.target.value);
@@ -141,8 +113,10 @@ export default function PaginaInicial() {
                   // Trocar o valor da variavel
                   // através do React e avise quem precisa
                   setUsername(valor);
-                }}
-                fullWidth
+                }} 
+                
+
+                 fullWidth
                 textFieldColors={{
                   neutral: {
                     textColor: appConfig.theme.colors.neutrals[200],
@@ -152,6 +126,7 @@ export default function PaginaInicial() {
                   },
                 }}
               />
+              
               <Button
                 type='submit'
                 label='Entrar'
@@ -165,6 +140,7 @@ export default function PaginaInicial() {
               />
             </Box>
             {/* Formulário */}
+
   
   
             {/* Photo Area */}

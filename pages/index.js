@@ -5,7 +5,7 @@ import appConfig from '../config.json';
 
 function Titulo(props) {
     //console.log(props);
-    const Tag = props.tag;
+    const Tag = props.tag || h1;
 
     return (
     <>
@@ -78,7 +78,7 @@ export default function PaginaInicial() {
               onSubmit={function (infosDoEvento) {
                 infosDoEvento.preventDefault();
                 console.log('Alguém submeteu o form');
-                roteamento.push('/chat');
+                roteamento.push(`/chat?username=${username}`);
                 //window.location.href = '/chat';
               }}
               styleSheet={{
